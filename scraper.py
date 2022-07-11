@@ -26,12 +26,12 @@ def load_and_accept_cookies() -> webdriver.Chrome:
     driver.get("https://gorillamind.com/")
     link = driver.find_element(By.LINK_TEXT,"All Products")
     link.click()
-    link2 = driver.find_element(By.CLASS_NAME,"sc-75msgg-0 RlRPc close-button cw-close")
+    link2 = driver.find_element(By.XPATH,'//button[@class="sc-75msgg-0 RlRPc close-button cw-close"]')
     link2.click()
-
+    
     try:
         element = WebDriverWait(driver, 10).until(
-            EC.presence_of_element_located((By.CLASS_NAME,"sc-75msgg-0 RlRPc close-button cw-close")))
+            EC.presence_of_element_located(By.XPATH,'//button[@class="sc-75msgg-0 RlRPc close-button cw-close"]'))
         element.click()
     except:
         driver.quit() 
@@ -39,7 +39,6 @@ def load_and_accept_cookies() -> webdriver.Chrome:
     return
 
 load_and_accept_cookies()
-
 
 
 
